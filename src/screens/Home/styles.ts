@@ -1,0 +1,177 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../../theme/colors';
+
+export const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  content: {
+    padding: 18,
+    paddingBottom: 28,
+  },
+  heroCard: {
+    backgroundColor: colors.primary,
+    borderRadius: 24,
+    padding: 22,
+    marginBottom: 22,
+  },
+  badge: {
+    color: colors.info,
+    fontSize: 12,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    marginBottom: 10,
+    letterSpacing: 0.8,
+  },
+  heroTitle: {
+    color: colors.white,
+    fontSize: 25,
+    fontWeight: '800',
+    lineHeight: 33,
+    marginBottom: 10,
+  },
+  heroText: {
+    color: colors.heroText,
+    fontSize: 15,
+    lineHeight: 22,
+    marginBottom: 18,
+  },
+  heroActions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  primaryButton: {
+    backgroundColor: colors.secondary,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    borderRadius: 14,
+    marginRight: 10,
+    marginBottom: 10,
+  },
+  primaryButtonText: {
+    color: colors.white,
+    fontWeight: '700',
+  },
+  secondaryButton: {
+    backgroundColor: colors.primarySoft,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    borderRadius: 14,
+    marginBottom: 10,
+  },
+  secondaryButtonText: {
+    color: colors.heroText,
+    fontWeight: '700',
+  },
+  sectionHeader: {
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    color: colors.text,
+    fontSize: 20,
+    fontWeight: '800',
+    marginBottom: 4,
+  },
+  sectionSubtitle: {
+    color: colors.textSecondary,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  horizontalList: {
+    paddingBottom: 18,
+  },
+  categoryPill: {
+    backgroundColor: '#E8EEF5',
+    borderRadius: 999,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    marginRight: 10,
+  },
+  categoryText: {
+    color: colors.primary,
+    fontWeight: '700',
+    fontSize: 14,
+  },
+  productCard: {
+    width: 250,
+    backgroundColor: colors.surface,
+    borderRadius: 22,
+    padding: 16,
+    marginRight: 14,
+    shadowColor: '#000000',
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 3,
+  },
+  productImagePlaceholder: {
+    height: 118,
+    backgroundColor: colors.surfaceAlt,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 14,
+  },
+  productImageText: {
+    color: colors.primary,
+    fontSize: 26,
+    fontWeight: '800',
+  },
+  productName: {
+    color: colors.text,
+    fontSize: 17,
+    fontWeight: '800',
+    marginBottom: 8,
+  },
+  productDescription: {
+    color: colors.textSecondary,
+    fontSize: 14,
+    lineHeight: 20,
+    marginBottom: 14,
+    minHeight: 56,
+  },
+  productFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  productPrice: {
+    color: colors.primaryStrong,
+    fontSize: 18,
+    fontWeight: '800',
+  },
+  cardButton: {
+    backgroundColor: colors.accentSoft,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+  },
+  cardButtonText: {
+    color: '#195C5D',
+    fontWeight: '700',
+  },
+  infoCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 18,
+    padding: 16,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  infoDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: colors.accent,
+    marginRight: 12,
+  },
+  infoText: {
+    flex: 1,
+    color: '#32485E',
+    fontSize: 14,
+    lineHeight: 21,
+    fontWeight: '600',
+  },
+});

@@ -1,0 +1,121 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../../theme/colors';
+
+export const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  content: {
+    padding: 18,
+    paddingBottom: 30,
+  },
+  heroCard: {
+    backgroundColor: colors.primaryStrong,
+    borderRadius: 24,
+    padding: 22,
+    marginBottom: 22,
+  },
+  badge: {
+    color: '#A7E1DC',
+    fontSize: 12,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 0.8,
+    marginBottom: 10,
+  },
+  title: {
+    color: colors.white,
+    fontSize: 24,
+    fontWeight: '800',
+    lineHeight: 32,
+    marginBottom: 10,
+  },
+  subtitle: {
+    color: '#D9E6F2',
+    fontSize: 14,
+    lineHeight: 22,
+  },
+  sectionTitle: {
+    color: '#10253B',
+    fontSize: 20,
+    fontWeight: '800',
+    marginBottom: 14,
+  },
+  contactCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 20,
+    padding: 18,
+    marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 2,
+  },
+  contactTitle: {
+    color: '#17324D',
+    fontSize: 17,
+    fontWeight: '800',
+    marginBottom: 4,
+  },
+  contactDetail: {
+    color: '#66788A',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  actionButton: {
+    backgroundColor: colors.accentSoft,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+  },
+  actionText: {
+    color: '#195C5D',
+    fontWeight: '700',
+    fontSize: 13,
+  },
+  quoteCard: {
+    backgroundColor: colors.surfaceSoft,
+    borderRadius: 22,
+    padding: 18,
+    marginTop: 8,
+    marginBottom: 20,
+  },
+  quoteTitle: {
+    color: colors.primaryStrong,
+    fontSize: 18,
+    fontWeight: '800',
+    marginBottom: 8,
+  },
+  quoteText: {
+    color: colors.textMuted,
+    fontSize: 14,
+    lineHeight: 22,
+  },
+  infoCard: {
+    backgroundColor: colors.surface,
+    borderRadius: 18,
+    padding: 16,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: colors.accent,
+    marginRight: 12,
+  },
+  infoText: {
+    flex: 1,
+    color: '#32485E',
+    fontSize: 14,
+    lineHeight: 21,
+    fontWeight: '600',
+  },
+});

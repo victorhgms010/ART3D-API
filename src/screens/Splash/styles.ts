@@ -1,0 +1,3 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../../theme/colors';
+export const styles = StyleSheet.create({ container: { flex: 1, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center', padding: 28 }, card: { width: '100%', backgroundColor: colors.primaryStrong, borderRadius: 32, padding: 30, alignItems: 'center', borderWidth: 1, borderColor: '#2E5B82' }, logo: { width: 108, height: 108, marginBottom: 18 }, brand: { color: colors.white, fontSize: 38, fontWeight: '900', letterSpacing: 1 }, slogan: { color: colors.heroText, fontSize: 17, fontWeight: '700', marginTop: 8, textAlign: 'center' } });
