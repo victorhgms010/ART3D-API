@@ -3,7 +3,7 @@ import { products as fallbackProducts, Product } from '../data/products';
 
 export type User = { id: number; nome: string; email: string };
 export type PaymentMethod = 'Pix' | 'Cartão de crédito' | 'Cartão de débito';
-export type CartItem = { id: number; productId: number; nome: string; preco: string; categoria: string; imageKey?: Product['imageKey']; quantidade: number };
+export type CartItem = { id: number; productId: number; nome: string; preco: number; categoria: string; imageKey?: Product['imageKey']; quantidade: number };
 export type CartSummary = { items: CartItem[]; quantidadeItens: number; total: string; totalNumber: number };
 export type OrderResponse = { message: string; order: { id: number; status: string; message: string; customer: { nome: string; email?: string; telefone?: string }; payment: { method: PaymentMethod; status: string; details: string }; items: CartItem[]; quantidadeItens: number; total: string; createdAt: string } };
 

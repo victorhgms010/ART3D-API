@@ -5,7 +5,15 @@ const config = require('./config/server.config');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || config.corsOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Origem não autorizada pelo CORS.'));
+  },
+}));
 app.use(express.json());
 app.use('/api', routes);
 

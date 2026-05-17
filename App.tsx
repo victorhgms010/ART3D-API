@@ -7,6 +7,7 @@ import QuemSomos from './src/screens/QuemSomos';
 import Catalogo from './src/screens/Catalogo';
 import Contato from './src/screens/Contato';
 import Carrinho from './src/screens/Carrinho';
+import Localizacao from './src/screens/Localizacao';
 import Login from './src/screens/Login';
 import Splash from './src/screens/Splash';
 import { colors } from './src/theme/colors';
@@ -31,6 +32,7 @@ export default function App() {
         <Drawer.Screen name="Nossa História" component={QuemSomos} options={{ title: '🏢 Nossa História' }} />
         <Drawer.Screen name="Produtos 3D" component={Catalogo} options={{ title: '🧩 Produtos 3D' }} />
         <Drawer.Screen name="Carrinho" options={{ title: '🛒 Carrinho' }}>{(props) => <Carrinho {...props} user={user} />}</Drawer.Screen>
+        <Drawer.Screen name="Localização" component={Localizacao} options={{ title: '📍 Localização' }} />
         <Drawer.Screen name="Atendimento" component={Contato} options={{ title: '💬 Atendimento' }} />
       </Drawer.Navigator>
     </NavigationContainer>

@@ -1,18 +1,13 @@
 const { getCart, setCart, getOrders, addOrder } = require('../data/cart.data');
 const productsService = require('./products.service');
 
-function parsePrice(price) {
-  if (typeof price === 'number') return price;
-  return Number(String(price).replace('R$', '').replace('.', '').replace(',', '.').trim()) || 0;
-}
-
 function formatCurrency(value) {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 function getCartSummary() {
   const items = getCart();
-  const totalNumber = items.reduce((sum, item) => sum + parsePrice(item.preco) * item.quantidade, 0);
+  const totalNumber = items.reduce((sum, item) => sum + item.preco * item.quantidade, 0);
 
   return {
     items,

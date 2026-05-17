@@ -18,6 +18,31 @@ npm install
 npm run dev
 ```
 
+## Nova funcionalidade: Geolocalização
+
+O aplicativo agora possui a tela **Localização**, disponível no menu lateral.
+
+Essa funcionalidade permite que o usuário:
+
+* autorize o acesso à localização atual do aparelho;
+* visualize latitude e longitude com precisão aproximada;
+* consulte a distância estimada até o atendimento da Art3D em Cataguases/MG;
+* abra a rota diretamente no aplicativo de mapas do dispositivo.
+
+A implementação utiliza o pacote oficial **expo-location**, mantendo o projeto compatível com Expo Go e com o fluxo padrão:
+
+```bash
+npm install
+npx expo start
+```
+
+Também foram adicionadas permissões nativas no `app.json`:
+
+* Android: `ACCESS_COARSE_LOCATION` e `ACCESS_FINE_LOCATION`
+* iOS: `NSLocationWhenInUseUsageDescription`
+
+Caso o usuário negue a permissão, o app exibe uma mensagem orientando a liberação do acesso nas configurações do aparelho.
+
 ## Novidades adicionadas
 
 * Splash screen animada com o slogan: **Art3D seu mundo de impressão**
@@ -28,6 +53,9 @@ npm run dev
 * Checkout com Pix, cartão de crédito e cartão de débito
 * Retorno do pedido no app, no terminal do servidor e no Postman
 * API RESTful completa integrada via Fetch API
+* Tela de geolocalização com permissão nativa, precisão, distância estimada e abertura de rota no mapa
+* CORS configurável por variável de ambiente
+* Preços salvos como número e formatados apenas na apresentação
 
 ---
 
@@ -218,4 +246,3 @@ DELETE `http://localhost:3333/api/orders/1`
 
 ```
 ```
-

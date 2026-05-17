@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { homeCategories, Product } from '../../data/products';
 import { fetchProducts } from '../../services/api';
+import { formatCurrency } from '../../utils/format';
 import { styles } from './styles';
 
 const vantagens = [
@@ -75,7 +76,7 @@ export default function Home() {
             <Text style={styles.productName}>{produto.nome}</Text>
             <Text style={styles.productDescription}>{produto.descricao}</Text>
             <View style={styles.productFooter}>
-              <Text style={styles.productPrice}>{produto.preco}</Text>
+              <Text style={styles.productPrice}>{formatCurrency(produto.preco)}</Text>
               <TouchableOpacity style={styles.cardButton}>
                 <Text style={styles.cardButtonText}>Quero esse</Text>
               </TouchableOpacity>

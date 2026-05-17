@@ -1,5 +1,19 @@
 const { getProducts, setProducts } = require('../data/products.data');
 
+function normalizePrice(price) {
+  if (typeof price === 'number') return Number.isFinite(price) ? price : 0;
+
+  const normalizedPrice = Number(
+    String(price)
+      .replace('R$', '')
+      .replace(/\./g, '')
+      .replace(',', '.')
+      .trim(),
+  );
+
+  return Number.isFinite(normalizedPrice) ? normalizedPrice : 0;
+}
+
 function listProducts() {
   return getProducts();
 }
@@ -15,10 +29,11 @@ function createProduct(productData) {
   const product = {
     id: nextId,
     nome: productData.nome,
-    preco: productData.preco,
+    preco: normalizePrice(productData.preco),
     descricao: productData.descricao,
     categoria: productData.categoria,
     destaque: Boolean(productData.destaque),
+    imageKey: productData.imageKey,
   };
 
   setProducts([...products, product]);
@@ -37,6 +52,7 @@ function updateProduct(id, productData) {
     ...products[productIndex],
     ...productData,
     id: Number(id),
+    preco: productData.preco === undefined ? products[productIndex].preco : normalizePrice(productData.preco),
   };
 
   products[productIndex] = updatedProduct;
