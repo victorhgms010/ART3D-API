@@ -32,6 +32,18 @@ function formatCoordinate(value: number) {
   return value.toFixed(6).replace('.', ',');
 }
 
+function buildRouteUrl(location: Location.LocationObject | null) {
+  const destination = `${STORE_LOCATION.latitude},${STORE_LOCATION.longitude}`;
+
+  if (Platform.OS === 'ios') {
+    const origin = location ? `${location.coords.latitude},${location.coords.longitude}` : 'Current Location';
+    return `http://maps.apple.com/?saddr=${encodeURIComponent(origin)}&daddr=${encodeURIComponent(destination)}&dirflg=d`;
+  }
+
+  const origin = location ? `&origin=${encodeURIComponent(`${location.coords.latitude},${location.coords.longitude}`)}` : '';
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}${origin}&travelmode=driving`;
+}
+
 export default function Localizacao() {
   const [location, setLocation] = useState<Location.LocationObject | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'denied' | 'ready'>('idle');
@@ -44,6 +56,13 @@ export default function Localizacao() {
   async function handleRequestLocation() {
     setStatus('loading');
 
+    const locationServicesEnabled = await Location.hasServicesEnabledAsync();
+    if (!locationServicesEnabled) {
+      setStatus('idle');
+      Alert.alert('Localização desligada', 'Ative os serviços de localização do aparelho ou configure uma localização simulada no iOS Simulator.');
+      return;
+    }
+
     const permission = await Location.requestForegroundPermissionsAsync();
     if (permission.status !== Location.PermissionStatus.GRANTED) {
       setStatus('denied');
@@ -53,26 +72,34 @@ export default function Localizacao() {
 
     try {
       const currentLocation = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.Balanced,
+        accuracy: Location.Accuracy.High,
       });
 
       setLocation(currentLocation);
       setStatus('ready');
     } catch {
+      const lastKnownLocation = await Location.getLastKnownPositionAsync({
+        maxAge: 60000,
+        requiredAccuracy: 1000,
+      });
+
+      if (lastKnownLocation) {
+        setLocation(lastKnownLocation);
+        setStatus('ready');
+        return;
+      }
+
       setStatus('idle');
-      Alert.alert('Localização indisponível', 'Não foi possível obter sua posição agora. Tente novamente em alguns instantes.');
+      Alert.alert('Localização indisponível', 'No iOS Simulator, defina uma localização em Features > Location. Em um aparelho real, verifique se o GPS está ativo.');
     }
   }
 
   function handleOpenMaps() {
-    const destination = `${STORE_LOCATION.latitude},${STORE_LOCATION.longitude}`;
-    const origin = location ? `${location.coords.latitude},${location.coords.longitude}` : undefined;
-    const url = Platform.select({
-      ios: `http://maps.apple.com/?daddr=${destination}${origin ? `&saddr=${origin}` : ''}`,
-      default: `https://www.google.com/maps/dir/?api=1&destination=${destination}${origin ? `&origin=${origin}` : ''}`,
-    });
+    const url = buildRouteUrl(location);
 
-    if (url) Linking.openURL(url);
+    Linking.openURL(url).catch(() => {
+      Alert.alert('Mapa indisponível', 'Não foi possível abrir o aplicativo de mapas neste dispositivo.');
+    });
   }
 
   const accuracy = location?.coords.accuracy ? `${Math.round(location.coords.accuracy)} m` : 'Aguardando leitura';

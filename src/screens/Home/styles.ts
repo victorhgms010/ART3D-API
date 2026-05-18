@@ -40,18 +40,26 @@ export const styles = StyleSheet.create({
   heroActions: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    gap: 10,
   },
   primaryButton: {
     backgroundColor: colors.secondary,
     paddingVertical: 12,
     paddingHorizontal: 18,
     borderRadius: 14,
-    marginRight: 10,
     marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   primaryButtonText: {
     color: colors.white,
     fontWeight: '700',
+  },
+  buttonIcon: {
+    color: colors.white,
+    fontSize: 18,
+    fontWeight: '900',
   },
   secondaryButton: {
     backgroundColor: colors.primarySoft,
@@ -59,10 +67,18 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 18,
     borderRadius: 14,
     marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   secondaryButtonText: {
     color: colors.heroText,
     fontWeight: '700',
+  },
+  secondaryButtonIcon: {
+    color: colors.heroText,
+    fontSize: 16,
+    fontWeight: '900',
   },
   sectionHeader: {
     marginBottom: 12,
@@ -87,11 +103,18 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     marginRight: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   categoryText: {
     color: colors.primary,
     fontWeight: '700',
     fontSize: 14,
+  },
+  categoryIcon: {
+    color: colors.primary,
+    fontWeight: '900',
   },
   productCard: {
     width: 250,
@@ -105,18 +128,11 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 3,
   },
-  productImagePlaceholder: {
+  productImage: {
     height: 118,
-    backgroundColor: colors.surfaceAlt,
+    width: '100%',
     borderRadius: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginBottom: 14,
-  },
-  productImageText: {
-    color: colors.primary,
-    fontSize: 26,
-    fontWeight: '800',
   },
   productName: {
     color: colors.text,
@@ -147,10 +163,18 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 14,
     borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
   },
   cardButtonText: {
     color: '#195C5D',
     fontWeight: '700',
+  },
+  cardButtonIcon: {
+    color: '#195C5D',
+    fontWeight: '900',
+    fontSize: 16,
   },
   infoCard: {
     backgroundColor: colors.surface,
@@ -160,11 +184,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  infoDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: colors.accent,
+  infoIcon: {
+    color: colors.accent,
+    fontSize: 22,
+    fontWeight: '900',
     marginRight: 12,
   },
   infoText: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { homeCategories, Product } from '../../data/products';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { homeCategories, Product, productImages } from '../../data/products';
 import { fetchProducts } from '../../services/api';
 import { formatCurrency } from '../../utils/format';
 import { styles } from './styles';
@@ -11,7 +11,7 @@ const vantagens = [
   'Acabamento pensado para encantar o cliente',
 ];
 
-export default function Home() {
+export default function Home({ navigation }: { navigation: any }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,10 +38,12 @@ export default function Home() {
         </Text>
 
         <View style={styles.heroActions}>
-          <TouchableOpacity style={styles.primaryButton}>
+          <TouchableOpacity style={styles.primaryButton} onPress={() => navigation.navigate('Produtos 3D')}>
+            <Text style={styles.buttonIcon}>+</Text>
             <Text style={styles.primaryButtonText}>Ver catálogo</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.secondaryButton}>
+          <TouchableOpacity style={styles.secondaryButton} onPress={() => navigation.navigate('Produtos 3D')}>
+            <Text style={styles.secondaryButtonIcon}>★</Text>
             <Text style={styles.secondaryButtonText}>Peças em destaque</Text>
           </TouchableOpacity>
         </View>
@@ -55,6 +57,7 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>
         {homeCategories.map((categoria) => (
           <View key={categoria} style={styles.categoryPill}>
+            <Text style={styles.categoryIcon}>#</Text>
             <Text style={styles.categoryText}>{categoria}</Text>
           </View>
         ))}
@@ -70,14 +73,13 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>
         {featuredProducts.map((produto) => (
           <View key={produto.id ?? produto.nome} style={styles.productCard}>
-            <View style={styles.productImagePlaceholder}>
-              <Text style={styles.productImageText}>3D</Text>
-            </View>
+            <Image source={productImages[produto.imageKey]} style={styles.productImage} resizeMode="cover" />
             <Text style={styles.productName}>{produto.nome}</Text>
             <Text style={styles.productDescription}>{produto.descricao}</Text>
             <View style={styles.productFooter}>
               <Text style={styles.productPrice}>{formatCurrency(produto.preco)}</Text>
-              <TouchableOpacity style={styles.cardButton}>
+              <TouchableOpacity style={styles.cardButton} onPress={() => navigation.navigate('Produtos 3D')}>
+                <Text style={styles.cardButtonIcon}>+</Text>
                 <Text style={styles.cardButtonText}>Quero esse</Text>
               </TouchableOpacity>
             </View>
@@ -91,7 +93,7 @@ export default function Home() {
 
       {vantagens.map((item) => (
         <View key={item} style={styles.infoCard}>
-          <View style={styles.infoDot} />
+          <Text style={styles.infoIcon}>✓</Text>
           <Text style={styles.infoText}>{item}</Text>
         </View>
       ))}

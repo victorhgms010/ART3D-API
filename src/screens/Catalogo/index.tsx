@@ -18,10 +18,16 @@ export default function Catalogo() {
   }
 
   return <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-    <View style={styles.topCard}><Text style={styles.topTitle}>Produtos profissionais Art3D</Text><Text style={styles.topText}>{loading ? 'Buscando produtos na API RESTful...' : 'Produtos com imagens carregados via fetch do backend Node.js.'}</Text></View>
+    <View style={styles.topCard}>
+      <View style={styles.topIcon}><Text style={styles.topIconText}>3D</Text></View>
+      <View style={styles.topCopy}>
+        <Text style={styles.topTitle}>Produtos profissionais Art3D</Text>
+        <Text style={styles.topText}>{loading ? 'Buscando produtos na API RESTful...' : 'Escolha uma peça, confira a imagem e adicione direto ao carrinho.'}</Text>
+      </View>
+    </View>
     <Text style={styles.sectionTitle}>Destaques da loja</Text>
-    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>{featured.map((produto) => <View key={produto.id ?? produto.nome} style={styles.highlightCard}><Image source={productImages[produto.imageKey]} style={styles.highlightPhoto} resizeMode="cover" /><Text style={styles.productName}>{produto.nome}</Text><Text style={styles.productPrice}>{formatCurrency(produto.preco)}</Text><Text style={styles.productDescription}>{produto.descricao}</Text><TouchableOpacity style={styles.buyButton} onPress={() => handleInterest(produto)}><Text style={styles.buyButtonText}>Adicionar ao carrinho</Text></TouchableOpacity></View>)}</ScrollView>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.horizontalList}>{featured.map((produto) => <View key={produto.id ?? produto.nome} style={styles.highlightCard}><Image source={productImages[produto.imageKey]} style={styles.highlightPhoto} resizeMode="cover" /><Text style={styles.productName}>{produto.nome}</Text><Text style={styles.productPrice}>{formatCurrency(produto.preco)}</Text><Text style={styles.productDescription}>{produto.descricao}</Text><TouchableOpacity style={styles.buyButton} onPress={() => handleInterest(produto)}><Text style={styles.buyButtonIcon}>+</Text><Text style={styles.buyButtonText}>Adicionar ao carrinho</Text></TouchableOpacity></View>)}</ScrollView>
     <Text style={styles.sectionTitle}>Todos os produtos</Text>
-    {products.map((produto) => <View key={produto.id ?? produto.nome} style={styles.listCard}><Image source={productImages[produto.imageKey]} style={styles.listPhoto} resizeMode="cover" /><View style={styles.listContent}><Text style={styles.listCategory}>{produto.categoria}</Text><Text style={styles.listName}>{produto.nome}</Text><Text style={styles.listDescription}>{produto.descricao}</Text><View style={styles.listFooter}><Text style={styles.listPrice}>{formatCurrency(produto.preco)}</Text><TouchableOpacity style={styles.smallButton} onPress={() => handleInterest(produto)}><Text style={styles.smallButtonText}>Adicionar</Text></TouchableOpacity></View></View></View>)}
+    {products.map((produto) => <View key={produto.id ?? produto.nome} style={styles.listCard}><Image source={productImages[produto.imageKey]} style={styles.listPhoto} resizeMode="cover" /><View style={styles.listContent}><View style={styles.categoryRow}><Text style={styles.categoryIcon}>#</Text><Text style={styles.listCategory}>{produto.categoria}</Text></View><Text style={styles.listName}>{produto.nome}</Text><Text style={styles.listDescription}>{produto.descricao}</Text><View style={styles.listFooter}><Text style={styles.listPrice}>{formatCurrency(produto.preco)}</Text><TouchableOpacity style={styles.smallButton} onPress={() => handleInterest(produto)}><Text style={styles.smallButtonIcon}>+</Text><Text style={styles.smallButtonText}>Adicionar</Text></TouchableOpacity></View></View></View>)}
   </ScrollView>;
 }

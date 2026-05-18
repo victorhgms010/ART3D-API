@@ -15,11 +15,30 @@ export const styles = StyleSheet.create({
     borderRadius: 22,
     padding: 18,
     marginBottom: 22,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
     shadowColor: '#000000',
     shadowOpacity: 0.06,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 2,
+  },
+  topIcon: {
+    width: 54,
+    height: 54,
+    borderRadius: 16,
+    backgroundColor: colors.primaryStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  topIconText: {
+    color: colors.white,
+    fontSize: 18,
+    fontWeight: '900',
+  },
+  topCopy: {
+    flex: 1,
   },
   topTitle: {
     color: colors.primary,
@@ -78,10 +97,18 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     paddingVertical: 11,
     alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 8,
   },
   buyButtonText: {
     color: colors.white,
     fontWeight: '700',
+  },
+  buyButtonIcon: {
+    color: colors.white,
+    fontWeight: '900',
+    fontSize: 17,
   },
   listCard: {
     backgroundColor: colors.surface,
@@ -104,12 +131,22 @@ export const styles = StyleSheet.create({
   listContent: {
     flex: 1,
   },
+  categoryRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginBottom: 4,
+  },
   listCategory: {
     color: colors.secondary,
     fontSize: 12,
     fontWeight: '700',
     textTransform: 'uppercase',
-    marginBottom: 4,
+  },
+  categoryIcon: {
+    color: colors.secondary,
+    fontWeight: '900',
+    fontSize: 13,
   },
   listName: {
     color: colors.text,
@@ -138,10 +175,18 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     paddingVertical: 9,
     paddingHorizontal: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
   },
   smallButtonText: {
     color: '#195C5D',
     fontWeight: '700',
     fontSize: 13,
+  },
+  smallButtonIcon: {
+    color: '#195C5D',
+    fontWeight: '900',
+    fontSize: 15,
   },
 });
